@@ -12,25 +12,19 @@
 
 ## Sandboxed Custom Visualizations Troubleshooting
 
-While the visualizations in this repository are deprecated and therefore not officially supported by Sandboxed Custom Visualizations (aka Custom Viz V2), it is possible to make them work. All it takes is understanding how to source the file and include the correct dependencies.
+While the visualizations in this repository are deprecated and therefore not officially supported by [Sandboxed Custom Visualizations (aka Custom Viz V2)](https://github.com/looker/custom_visualizations_v2), it is possible to make them work. All it takes is understanding how to source the file and include the correct dependencies.
 
 #### Sourcing the File
 
-One of the main features of Custom Viz V2 is being able to include the URL of a visualization. This is diserable because both Looker and its customers can self-host thier visualizations and pushing an update to that file will automatically update all visualizations in the Looker instance. To make the visualizations in this repository work with that format, you have 2 options:
+One of the main features of Custom Viz V2 is being able to include the URL of a visualization. This is diserable because both Looker and its customers can self-host their visualizations and pushing an update to that file will automatically update all visualizations in the Looker instance. :
 
-###### Option 1 (**Unsupported** but easiest): Use RawGit to create a production URL
+###### Hosting the JS file: Use RawGit to create a production URL
 
 Github stores files as text, so just copy-and-pasting the github URL into your visualization definition will not be enough. It needs the correct content headers to be able to execute as JavaScript. There is an third-party app called [RawGit](https://rawgit.com/) that will take GitHub files and host them with the correct headers.
 
 To use it, grab the Github URL of the JS file you want to use, such as [the spiderweb vis](https://github.com/looker/visualization-api-examples/blob/master/examples/highcharts_example/highcharts_spiderweb.js). Copy and paste the URL into RawGit and then grab the Production URL that it gives you. Use this link in the `main` field of your visualization definition.
 
 **Please Note** that we do not officially support this method as we do not own or partner with RawGit, so there is no guarantee of the uptime and security of the visualization files.
-
-###### Option 2 (Safest): Copy the contents of the file into the instance's `looker/plugins/visualizations` folder
-
-The official way to do this is to copy the contents of the visualization file into a JS file in the `looker/plugins/visualizations` folder on the instance.
-
-For example, if you copy the spiderweb visualizations into a file called `spiderweb.js` in the correct folder, then you will be able to simply put `spiderweb.js` in the `main` field of the custom visualization definition.
 
 #### Understanding Dependencies
 
