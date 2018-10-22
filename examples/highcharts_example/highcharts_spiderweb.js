@@ -27,21 +27,7 @@
       let measures = queryResponse.fields.measure_like
       let xCategories = data.map(function(row) {return row[x.name].value})
 
-      let series = measures.map(function(m) {
-        let format = formatType(m.value_format)
-        return {
-          name: m.label_short ? m.label_short : m.label,
-          pointPlacement: 'on',
-          data: data.map(function(row) {
-            return row[m.name].value
-          }),
-          tooltip: {
-            pointFormatter: function() {
-              return `<span style="color:${this.series.color}">${this.series.name}: <b>${format(this.y)}</b><br/>`
-            }
-          },
-        }
-      })
+      let series = measures.map(function(m) 
 
       let options = {
         colors: config.color_range,
