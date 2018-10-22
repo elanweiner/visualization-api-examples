@@ -21,11 +21,7 @@
     },
     // Render in response to the data or settings changing
     update: function(data, element, config, queryResponse) {
-      if (!handleErrors(this, queryResponse, {
-        min_pivots: 0, max_pivots: 0,
-        min_dimensions: 1, max_dimensions: 1,
-        min_measures: 1, max_measures: undefined,
-      })) return;
+      
 
       let x = queryResponse.fields.dimension_like[0]
       let measures = queryResponse.fields.measure_like
